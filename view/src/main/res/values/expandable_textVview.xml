@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MExpandableTextView">
+        <attr name="expandable_maxCollapsedLines" format="integer" />
+        <attr name="expandable_animDuration" format="integer" />
+        <attr name="expandable_animAlphaStart" format="float" />
+        <attr name="expandable_textSize" format="integer" />
+    </declare-styleable>
+    <item name="expandable_inner_text_view" type="id" />
+    <item name="expandable_clickable_view" type="id" />
+
+    <item name="PraiseCommentUnionView_btn" type="id" />
+    <item name="PraiseCommentUnionView_tv" type="id" />
+</resources>

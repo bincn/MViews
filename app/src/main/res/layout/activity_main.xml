@@ -13,4 +13,10 @@
         android:onClick="middleRefreshListClick"
         android:text="中间刷新列表" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="expandableTextClick"
+        android:text="可伸缩文本"/>
+
 </LinearLayout>
