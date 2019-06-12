@@ -10,13 +10,19 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="middleRefreshListClick"
+        android:onClick="onMiddleRefreshListClick"
         android:text="中间刷新列表" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="expandableTextClick"
-        android:text="可伸缩文本"/>
+        android:onClick="onExpandableTextClick"
+        android:text="可伸缩文本" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onVoteClick"
+        android:text="投票"/>
 
 </LinearLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="vote_rate_item_view">
+        <attr name="isLeft" format="boolean"/>
+    </declare-styleable>
+
+</resources>

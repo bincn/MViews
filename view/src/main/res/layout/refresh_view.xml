@@ -34,7 +34,7 @@
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:background="#999999" />
+            android:background="#FFCCCCCC" />
 
         <TextView
             android:id="@+id/tv_complete_tips"
