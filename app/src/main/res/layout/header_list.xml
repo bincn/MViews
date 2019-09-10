@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.bin.view.recyclerview.middle_refresh.HeaderContentView
+    <com.bincn.views.middle_refresh_recyclerview.HeaderContentView
         android:id="@+id/headerContentView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -15,6 +15,6 @@
             android:gravity="center"
             android:text="I am header" />
 
-    </com.bin.view.recyclerview.middle_refresh.HeaderContentView>
+    </com.bincn.views.middle_refresh_recyclerview.HeaderContentView>
 
 </RelativeLayout>

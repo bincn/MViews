@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
-    <com.bin.view.textview.expandable_textview.MExpandableTextView
-        android:id="@+id/expandable_text_view"
+  <com.bincn.views.expandableTextView.ExpandableTextView
+      android:id="@+id/expandable_text_view"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="15dp"
+      app:expandable_animAlphaOpen="false"
+      app:expandable_maxCollapsedLines="3"
+      >
+
+    <com.bincn.views.expandableTextView.InnerTextView
+        android:id="@+id/expandable_inner_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp">
+        />
 
-        <com.bin.view.textview.expandable_textview.MInnerTextView
-            android:id="@+id/expandable_inner_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/expandable_clickable_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="查看详情"
+        />
 
-        <TextView
-            android:id="@+id/expandable_clickable_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="查看详情" />
+  </com.bincn.views.expandableTextView.ExpandableTextView>
 
-    </com.bin.view.textview.expandable_textview.MExpandableTextView>
-
-</LinearLayout>
+</ScrollView>
