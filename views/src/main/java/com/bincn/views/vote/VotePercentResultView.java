@@ -11,18 +11,22 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
+import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.animation.DecelerateInterpolator;
 import androidx.annotation.Nullable;
-import com.bincn.views.R;
 import com.bincn.views.utils.DeviceUtils;
 
 /**
  * 左右百分比控件
  * Created by bin on 2019/5/21.
  */
-public class VotePercentResultView extends View {
+public class VotePercentResultView extends View implements ViewTreeObserver.OnGlobalLayoutListener {
+
+    private final String TAG = getClass().getSimpleName();
 
     private Paint mLeftPaint, mRightPaint, mTextPaint;
     /**
@@ -32,11 +36,13 @@ public class VotePercentResultView extends View {
     /**
      * 中间间隔
      */
-    private int mGap;
+    private int mMiddleGap;
+    private int mMiddleDefaultGap = 20;
     /**
      * 左右的百分比
      */
-    private int mLeftPercent, mRightPercent;
+    private int mLeftOriginPercent, mRightOriginPercent;
+    private int mLeftFinalPercent, mRightFinalPercent;
     /**
      * 最大最小占比
      */
@@ -54,6 +60,7 @@ public class VotePercentResultView extends View {
      * 水平便宜宽度
      */
     private int mOffsetWidth;
+    private ViewTreeObserver mViewTreeObserver;
 
     public VotePercentResultView(Context context) {
         super(context);
@@ -71,11 +78,7 @@ public class VotePercentResultView extends View {
     }
 
     private void init(Context context) {
-        mGap = DeviceUtils.px2dip(getContext(), 20);
-        mWidth = DeviceUtils.getScreenWidth(context) - DeviceUtils.dip2px(context, 15) * 2 - DeviceUtils.dip2px(context, 10) * 2;
-        mHeight = DeviceUtils.dip2px(context, 36);
-        mRadius = mHeight / 2;
-        mOffsetWidth = mRadius / 3;
+        mMiddleGap = DeviceUtils.px2dip(getContext(), mMiddleDefaultGap);
 
         mLeftPaint = new Paint();
         mLeftPaint.setAntiAlias(true);
@@ -123,7 +126,7 @@ public class VotePercentResultView extends View {
     }
 
     private void drawRightText(Canvas canvas) {
-        Rect rect = new Rect(mLeftWidth + mGap, 0, mWidth, mHeight);
+        Rect rect = new Rect(mLeftWidth + mMiddleGap, 0, mWidth, mHeight);
         Paint paint = new Paint();
         paint.setColor(Color.TRANSPARENT);
         paint.setStyle(Paint.Style.FILL);
@@ -134,7 +137,7 @@ public class VotePercentResultView extends View {
         float bottom = fontMetrics.bottom;
         int baseLineY = (int) (rect.centerY() - top / 2 - bottom / 2);
 
-        canvas.drawText(mRightPercent + "%", rect.centerX(), baseLineY, mTextPaint);
+        canvas.drawText(mRightOriginPercent + "%", rect.centerX(), baseLineY, mTextPaint);
     }
 
     /**
@@ -158,7 +161,7 @@ public class VotePercentResultView extends View {
     }
 
     private void drawLeftText(Canvas canvas) {
-        Rect rect = new Rect(0, 0, mLeftWidth - mGap, mHeight);
+        Rect rect = new Rect(0, 0, mLeftWidth - mMiddleGap, mHeight);
         Paint paint = new Paint();
         paint.setColor(Color.TRANSPARENT);
         paint.setStyle(Paint.Style.FILL);
@@ -169,7 +172,7 @@ public class VotePercentResultView extends View {
         float bottom = fontMetrics.bottom;
         int baseLineY = (int) (rect.centerY() - top / 2 - bottom / 2);
 
-        canvas.drawText(mLeftPercent + "%", rect.centerX(), baseLineY, mTextPaint);
+        canvas.drawText(mLeftOriginPercent + "%", rect.centerX(), baseLineY, mTextPaint);
     }
 
     public void startAnim() {
@@ -209,28 +212,24 @@ public class VotePercentResultView extends View {
      * @param rightPercent 右
      */
     public void setPercent(int leftPercent, int rightPercent) {
-        mLeftPercent = leftPercent;
-        mRightPercent = rightPercent;
+        mLeftOriginPercent = leftPercent;
+        mRightOriginPercent = rightPercent;
+        mLeftFinalPercent = leftPercent;
+        mRightFinalPercent = rightPercent;
         // 如果有百分比为 0，给个默认值
         if (leftPercent == 0 && rightPercent == 0) {
-            leftPercent = 50;
-            rightPercent = 50;
+            mLeftFinalPercent = 50;
+            mRightFinalPercent = 50;
         } else if (leftPercent < minPercent) {
-            leftPercent = minPercent;
-            rightPercent = maxPercent;
+            mLeftFinalPercent = minPercent;
+            mRightFinalPercent = maxPercent;
         } else if (rightPercent < minPercent) {
-            leftPercent = maxPercent;
-            rightPercent = minPercent;
+            mLeftFinalPercent = maxPercent;
+            mRightFinalPercent = minPercent;
         }
-        mLeftWidth = (mWidth - mGap) * leftPercent / 100;
-        mRightWidth = (mWidth - mGap) * rightPercent / 100;
-        setPaintColor();
-        if (!mIsShowAnim) {
-            mLeftAnimValue = mLeftWidth - mHeight;
-            mRightAnimValue = mRightWidth - mHeight;
-            invalidate();
-        } else {
-            startAnim();
+        mViewTreeObserver = getViewTreeObserver();
+        if (mViewTreeObserver.isAlive()) {
+            mViewTreeObserver.addOnGlobalLayoutListener(this);
         }
     }
 
@@ -267,11 +266,39 @@ public class VotePercentResultView extends View {
     public void reset() {
         mLeftAnimValue = 0;
         mRightAnimValue = 0;
-        mLeftPercent = 0;
-        mRightPercent = 0;
+        mLeftOriginPercent = 0;
+        mRightOriginPercent = 0;
+        mLeftFinalPercent = 0;
+        mRightFinalPercent = 0;
     }
 
     public void setShowAnim(boolean showAnim) {
         mIsShowAnim = showAnim;
+    }
+
+    @Override public void onGlobalLayout() {
+        Log.i(TAG, "onGlobalLayout: height : " + getHeight() + ", width : " + getWidth());
+
+        mWidth = getWidth();
+        mHeight = getHeight();
+        mRadius = mHeight / 2;
+        mOffsetWidth = mRadius / 3;
+
+        mLeftWidth = (mWidth - mMiddleGap) * mLeftFinalPercent / 100;
+        mRightWidth = (mWidth - mMiddleGap) * mRightFinalPercent / 100;
+
+        setPaintColor();
+        if (!mIsShowAnim) {
+            mLeftAnimValue = mLeftWidth - mHeight;
+            mRightAnimValue = mRightWidth - mHeight;
+            invalidate();
+        } else {
+            startAnim();
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mViewTreeObserver.removeOnGlobalLayoutListener(this);
+        } else {
+            mViewTreeObserver.removeGlobalOnLayoutListener(this);
+        }
     }
 }
