@@ -17,10 +17,14 @@ public class InnerTextView extends AppCompatTextView {
 
     private static final String TAG = "MInnerTextView";
 
-    private CharSequence mTextExpanded;     // 展开的文字内容
-    private CharSequence mTextCollapsed;    // 收缩的文字内容
-    private String mTagCollapsed = "...";   // 收缩时显示
-    private String mTagExpanded = "";       // 展开时显示
+    // 展开的文字内容
+    private CharSequence mTextExpanded;
+    // 收缩的文字内容
+    private CharSequence mTextCollapsed;
+    // 收缩时显示
+    private String mTagCollapsed = "...";
+    // 展开时显示
+    private String mTagExpanded = "";
 
     private int mMeasureWidth;
     private int mMaxCollapsedLines;
@@ -49,7 +53,7 @@ public class InnerTextView extends AppCompatTextView {
     }
 
     /**
-     * 当 MInnerTextView 不可点击时，重新计算文本宽度
+     * 当 InnerTextView 不可点击时，重新计算文本宽度
      * mMaxCollapsedLines 显示的行数
      */
     public void calculator() {

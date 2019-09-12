@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,6 +41,7 @@ public class ExpandableTextActivity extends BaseActivity {
             public void onExpandStateChanged(TextView textView, boolean isExpanded) {
                 super.onExpandStateChanged(textView, isExpanded);
                 Log.i(TAG, "onExpandStateChanged: isExpanded : " + isExpanded);
+                Toast.makeText(ExpandableTextActivity.this, "isExpand " + isExpanded, Toast.LENGTH_SHORT).show();
             }
 
             @Override
