@@ -2,11 +2,10 @@ package com.bincn.views.expandableTextView;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-
-import androidx.appcompat.widget.AppCompatTextView;
 
 import com.bincn.views.utils.DeviceUtils;
 

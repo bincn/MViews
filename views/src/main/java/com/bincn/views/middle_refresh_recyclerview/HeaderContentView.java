@@ -2,12 +2,11 @@ package com.bincn.views.middle_refresh_recyclerview;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
 import android.widget.LinearLayout;
-
-import androidx.annotation.Nullable;
 
 /**
  * Created by bin on 2018/11/30.

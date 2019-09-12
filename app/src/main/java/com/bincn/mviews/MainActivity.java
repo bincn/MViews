@@ -20,12 +20,14 @@ public class MainActivity extends BaseActivity {
     }
 
     public void onExpandableTextClick(View v) {
-        Intent intent = new Intent(this, ExpandableTextActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, ExpandableTextActivity.class));
     }
 
     public void onVoteClick(View v) {
-        Intent intent = new Intent(this, VoteActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, VoteActivity.class));
+    }
+
+    public void onRadiusClick(View v) {
+        startActivity(new Intent(this, RadiusActivity.class));
     }
 }

@@ -1,9 +1,9 @@
 package com.bincn.mviews;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Toast;
-import androidx.annotation.Nullable;
 import com.bincn.views.vote.VotePercentView;
 
 /**

@@ -1,18 +1,14 @@
 package com.bincn.views.vote;
 
 import android.content.Context;
-import android.text.TextUtils;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import androidx.annotation.Nullable;
 import com.bincn.views.R;
-import com.bincn.views.utils.DeviceUtils;
-import java.util.List;
 
 /**
  * Created by bin on 2019/5/21.
