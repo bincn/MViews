@@ -26,28 +26,19 @@
           android:text="xml shape"
           />
 
-      <LinearLayout
+      <FrameLayout
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:background="@drawable/selector_default"
-          android:clickable="true"
+          android:layout_height="50dp"
+          android:background="@drawable/shape_radius"
           >
 
-        <FrameLayout
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/shape_radius"
-            >
+            android:layout_height="20dp"
+            android:background="@color/colorPrimary"
+            />
 
-          <ImageView
-              android:layout_width="match_parent"
-              android:layout_height="20dp"
-              android:background="@color/colorPrimary"
-              />
-
-        </FrameLayout>
-
-      </LinearLayout>
+      </FrameLayout>
 
       <!-- CardView -->
       <TextView
@@ -58,31 +49,22 @@
           android:text="CardView"
           />
 
-      <LinearLayout
+      <!-- 阴影占用控件宽高 -->
+      <android.support.v7.widget.CardView
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:background="@drawable/selector_default"
-          android:clickable="true"
+          android:layout_height="50dp"
+          app:cardBackgroundColor="@color/config_color_white"
+          app:cardCornerRadius="8dp"
+          app:cardElevation="0dp"
           >
 
-        <!-- 阴影占用控件宽高 -->
-        <android.support.v7.widget.CardView
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:cardBackgroundColor="#40000000"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="0dp"
-            >
+            android:layout_height="20dp"
+            android:background="@color/colorPrimary"
+            />
 
-          <ImageView
-              android:layout_width="match_parent"
-              android:layout_height="20dp"
-              android:background="@color/colorPrimary"
-              />
-
-        </android.support.v7.widget.CardView>
-
-      </LinearLayout>
+      </android.support.v7.widget.CardView>
 
       <!-- Drawable -->
       <TextView
@@ -93,29 +75,44 @@
           android:text="Drawable"
           />
 
-      <LinearLayout
+      <FrameLayout
+          android:id="@+id/fl_radius"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:background="@drawable/selector_default"
-          android:clickable="true"
+          android:layout_height="50dp"
           >
 
-        <FrameLayout
-            android:id="@+id/fl_radius"
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#40000000"
-            >
+            android:layout_height="20dp"
+            android:background="@color/colorPrimary"
+            />
 
-          <ImageView
-              android:layout_width="match_parent"
-              android:layout_height="20dp"
-              android:background="@color/colorPrimary"
-              />
+      </FrameLayout>
 
-        </FrameLayout>
+      <!-- final -->
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="16dp"
+          android:layout_marginTop="16dp"
+          android:text="final"
+          />
 
-      </LinearLayout>
+      <com.bincn.views.layout.radius.RadiusLinearLayout
+          android:id="@+id/layout_radius"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:layout_gravity="center"
+          android:background="@color/config_color_white"
+          >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@color/colorPrimary"
+            />
+
+      </com.bincn.views.layout.radius.RadiusLinearLayout>
 
     </LinearLayout>
 

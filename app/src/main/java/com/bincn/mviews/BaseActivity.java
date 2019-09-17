@@ -28,7 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private void initBaseView() {
         mLayoutBase = findViewById(R.id.layout_base);
-        mLayoutBase.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+        mLayoutBase.setBackgroundColor(getResources().getColor(R.color.config_color_background));
     }
 
     private void addContentView() {
