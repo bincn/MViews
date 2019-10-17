@@ -25,4 +25,11 @@
         android:onClick="onRadiusClick"
         android:text="圆角"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onTextSwitcher"
+        android:text="Text Switcher"
+        />
+
 </LinearLayout>

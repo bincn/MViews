@@ -19,6 +19,7 @@
     <activity android:name=".MiddleRefreshListActivity"/>
     <activity android:name=".VoteActivity"/>
     <activity android:name=".RadiusActivity"/>
+    <activity android:name=".TextSwitcherActivity"/>
   </application>
 
 </manifest>
