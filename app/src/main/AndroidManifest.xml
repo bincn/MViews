@@ -20,6 +20,7 @@
     <activity android:name=".VoteActivity"/>
     <activity android:name=".RadiusActivity"/>
     <activity android:name=".TextSwitcherActivity"/>
+    <activity android:name=".AutoVerticalScrollTextActivity"/>
   </application>
 
 </manifest>

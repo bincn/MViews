@@ -34,4 +34,8 @@ public class MainActivity extends BaseActivity {
     public void onTextSwitcher(View v) {
         startActivity(new Intent(this, TextSwitcherActivity.class));
     }
+
+    public void onAutoVerticalScrollText(View v) {
+        startActivity(new Intent(this, AutoVerticalScrollTextActivity.class));
+    }
 }
