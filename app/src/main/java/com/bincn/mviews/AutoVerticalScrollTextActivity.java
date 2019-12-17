@@ -6,7 +6,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
+import com.bincn.views.views.AutoPollRecyclerView;
 import com.bincn.views.views.AutoVerticalScrollLayout;
+import com.bincn.views.views.ScrollSpeedLinearLayoutManger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,20 @@ public class AutoVerticalScrollTextActivity extends BaseActivity {
         initViewFlipper();
 
         initAutoVerticalScrollLayout();
+
+        initAutoPollRecyclerView();
+    }
+
+    private void initAutoPollRecyclerView() {
+        AutoPollRecyclerView autoPollRecyclerView = findViewById(R.id.auto_poll_recycler_view);
+        ScrollSpeedLinearLayoutManger linearLayoutManger = new ScrollSpeedLinearLayoutManger(this);
+        linearLayoutManger.setMillisecondsPerInch(2.0f);
+        autoPollRecyclerView.setLayoutManager(linearLayoutManger);
+        AutoPollRecyclerViewAdapter autoPollRecyclerViewAdapter = new AutoPollRecyclerViewAdapter(this);
+        autoPollRecyclerView.setHandleDispatchTouchEvent(false);
+        autoPollRecyclerView.setAdapter(autoPollRecyclerViewAdapter);
+        autoPollRecyclerView.scrollToPosition(0);
+        autoPollRecyclerView.start();
     }
 
     private void initAutoVerticalScrollLayout() {

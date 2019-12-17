@@ -88,6 +88,9 @@ public class AutoVerticalScrollLayout extends FrameLayout {
         position++;
         recyclerView.smoothScrollToPosition(position);
         mHandler.sendEmptyMessageDelayed(0, 3000);
+
+        //recyclerView.scrollBy(2, 2);
+        //mHandler.sendEmptyMessageDelayed(0, 16);
     }
 
     @Override protected void onAttachedToWindow() {

@@ -9,7 +9,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_margin="16dp"
-      android:text="1. ViewFlipper 实现滚动"
+      android:text="ViewFlipper 实现滚动"
       />
 
   <ViewFlipper
@@ -24,7 +24,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_margin="16dp"
-      android:text="2. 竖向滚动列表"
+      android:text="竖向滚动列表"
       />
 
   <com.bincn.views.views.AutoVerticalScrollLayout
@@ -33,5 +33,17 @@
       android:layout_height="wrap_content"
       />
 
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="16dp"
+      android:text="单列竖向滚动列表"
+      />
+
+  <com.bincn.views.views.AutoPollRecyclerView
+      android:id="@+id/auto_poll_recycler_view"
+      android:layout_width="match_parent"
+      android:layout_height="30dp"
+      />
 
 </LinearLayout>
