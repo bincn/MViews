@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import android.widget.Toast;
 
+import com.bincn.views.expandableTextView.ExpandableTextLayout;
 import com.bincn.views.expandableTextView.ExpandableTextView;
 
 /**
@@ -32,8 +33,10 @@ public class ExpandableTextActivity extends BaseActivity {
                 "\n" +
                 "总结：这三个阶段的 Android 上 API 版本混乱，各种 Flag 林立。再加上各大厂商的定制化可谓是火上浇油，让安卓开发者异常头疼。";
 
+        String text1 = "留住成长的点滴，快来分享宝宝的视频成长日记吧留住成长的点滴，快来分享宝宝的视频成长日记吧留住成长的点滴快来分享宝宝的视频成长日记吧留住成长的点滴，快来分享宝宝的视频成长日记吧留住成长的点滴，快来分享宝宝的视频成长日记吧留住成长的点滴，快来分享宝宝的视频成长日记吧留住成长的点滴快来分享宝宝的视频成长日记吧留住成长的点滴，快来分享宝宝的视频成长日记吧留住成长的点滴快来分享宝宝的视频成长日记吧留住成长的点滴，快来分享宝宝的视频成长日记吧长日记吧留住成长全部展示状态。";
+
         ExpandableTextView expandableTextView = findViewById(R.id.expandable_text_view);
-        expandableTextView.setText(text);
+        expandableTextView.setText(text, true);
         expandableTextView.setOnExpandStateChangeListener(new ExpandableTextView.OnExpandStateChangeListenerImp() {
             @Override
             public void onExpandStateChanged(TextView textView, boolean isExpanded) {
@@ -45,6 +48,15 @@ public class ExpandableTextActivity extends BaseActivity {
             @Override
             public void onClickTargetView() {
                 super.onClickTargetView();
+            }
+        });
+
+        // layout
+        ExpandableTextLayout expandableTextLayout = findViewById(R.id.expandableTextLayout);
+        expandableTextLayout.setText(text1);
+        expandableTextLayout.setOnExpandableTextLayoutListener(new ExpandableTextLayout.OnExpandableTextLayoutListener() {
+            @Override
+            public void onExpandStateChanged(ExpandableTextLayout expandableTextLayout, boolean isExpanded) {
             }
         });
     }

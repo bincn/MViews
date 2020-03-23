@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+  <!-- ExpandableTextView -->
   <declare-styleable name="ExpandableTextView">
     <attr format="integer" name="expandable_maxCollapsedLines"/>
     <attr format="integer" name="expandable_animDuration"/>
     <attr format="float" name="expandable_animAlphaStart"/>
     <attr format="integer" name="expandable_textSize"/>
+    <attr format="color" name="expandable_textColor"/>
+    <attr format="color" name="expandable_tailTextColor"/>
     <attr format="boolean" name="expandable_animAlphaOpen"/>
   </declare-styleable>
   <item name="expandable_inner_text_view" type="id"/>
   <item name="expandable_clickable_view" type="id"/>
+
+  <!--  ExpandableTextLayout  -->
+  <declare-styleable name="ExpandableTextLayout">
+    <attr name="etl_maxCollapsedLines" format="integer"/>
+    <attr name="etl_animDuration" format="integer"/>
+    <attr name="etl_textSize" format="integer"/>
+    <attr name="etl_textColor" format="color"/>
+    <attr name="etl_tailTextColor" format="color"/>
+  </declare-styleable>
 </resources>

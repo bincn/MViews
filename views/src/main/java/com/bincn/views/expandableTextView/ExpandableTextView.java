@@ -96,32 +96,19 @@ public class ExpandableTextView extends FrameLayout implements View.OnClickListe
 
   @Override
   protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-    // 没有变化，默认测量绘制
     if (!mRelayout || getVisibility() == View.GONE) {
       super.onMeasure(widthMeasureSpec, heightMeasureSpec);
       return;
     }
     mRelayout = false;
-    // 设置最大行数
-    mInnerTextView.setMaxLines(Integer.MAX_VALUE);
-    // 重新测量绘制
     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-    // 如果适应收缩模式，直接结束
     if (mInnerTextView.getLineCount() <= mMaxCollapsedLines) {
       return;
     }
-    // 获取 TextView 实际的高度
     mExpandedHeight = getRealTextViewHeight(mInnerTextView);
-    // 如果不适应收缩模式，收缩并设置最大可见行数
-    if (mCollapsed) {
-      mInnerTextView.setMaxLines(mMaxCollapsedLines);
-    }
-    // 重新测量绘制，使用最新设置
+    mInnerTextView.setMaxLines(mMaxCollapsedLines);
     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-    if (mCollapsed) {
-      // 获取收缩时容器高度
-      mCollapsedHeight = getMeasuredHeight();
-    }
+    mCollapsedHeight = getMeasuredHeight();
   }
 
   @Override
