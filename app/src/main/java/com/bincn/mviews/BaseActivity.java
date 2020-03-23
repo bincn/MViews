@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 /**
@@ -15,6 +16,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public final String TAG = getClass().getSimpleName();
     private RelativeLayout mLayoutBase;
+    private FrameLayout mTitleBarView;
 
     public abstract int getLayoutId();
 
@@ -28,6 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private void initBaseView() {
         mLayoutBase = findViewById(R.id.layout_base);
+        mTitleBarView = findViewById(R.id.layout_common_head);
         mLayoutBase.setBackgroundColor(getResources().getColor(R.color.config_color_background));
     }
 
@@ -42,6 +45,12 @@ public abstract class BaseActivity extends AppCompatActivity {
             if (view != null) {
                 mLayoutBase.addView(view, params);
             }
+        }
+    }
+
+    protected void hideTitleBarView() {
+        if (mTitleBarView != null) {
+            mTitleBarView.setVisibility(View.GONE);
         }
     }
 }
