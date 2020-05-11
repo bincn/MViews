@@ -28,7 +28,6 @@ public class RadiusActivity extends BaseActivity {
 
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
         initLayout();
     }
 

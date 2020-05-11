@@ -39,4 +39,10 @@
         android:text="Auto Vertical Scroll Text"
         />
 
+    <CheckBox
+        android:id="@+id/checkboxGrayMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gray Mode" />
+
 </LinearLayout>

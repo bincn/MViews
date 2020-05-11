@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
+import butterknife.ButterKnife;
+
 /**
  * @author bin
  * @date 2019-09-10
@@ -26,6 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
         initBaseView();
         addContentView();
+        ButterKnife.bind(this);
     }
 
     private void initBaseView() {
